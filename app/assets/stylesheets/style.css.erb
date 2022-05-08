@@ -23,3 +23,46 @@ div {
   margin: 0;
   padding: 0;
 }
+
+header h1 {
+  padding-right: 30px;
+}
+
+.header {
+  display: flex;
+  padding: 0 50px;
+  height: 70px;
+  align-items: center;
+  background-color: rgb(156, 204, 108);
+}
+
+.header a {
+  color: rgb(252, 255, 198);
+  text-decoration: none;
+}
+
+.top_page_frame {
+  height: 100vh;
+  background-image: url(<%= asset_path 'background.gif' %>);
+}
+
+.top_page {
+  padding: 100px 10px;
+  margin: 0 auto;
+  width: 300px;
+}
+
+
+.top_page a {
+  display: block;
+  padding: 10px 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.top_page a:hover {
+  color: rgb(252, 255, 198);
+  text-decoration: none;
+  background-color: rgb(156, 204, 108);
+}
