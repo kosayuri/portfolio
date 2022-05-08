@@ -24,10 +24,6 @@ div {
   padding: 0;
 }
 
-header h1 {
-  padding-right: 30px;
-}
-
 .header {
   display: flex;
   padding: 0 50px;
@@ -64,4 +60,25 @@ header h1 {
   color: rgb(252, 255, 198);
   text-decoration: none;
   background-color: rgb(156, 204, 108);
+}
+
+.header-right {
+  margin-left: auto;
+}
+
+.header-right a {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 670px) {
+
+  .header {
+    padding: 0 15px;
+  }
+
+  .header-right a {
+    display: block;
+    text-align: center;
+  }
 }
