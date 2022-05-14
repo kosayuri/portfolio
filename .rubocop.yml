@@ -7,3 +7,14 @@ require:
 
 AllCops:
   NewCops: enable
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Rails/FilePath:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'spec/rails_helper.rb'
