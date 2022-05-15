@@ -33,12 +33,11 @@
       <p><%= f.label :password %></p>
       <p>
         <% if @minimum_password_length %>
-        <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+          <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
         <% end %>
       </p>
-    (<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)<br />
+      (<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)<br />
       <%= f.password_field :password, autocomplete: "new-password" %>
-
     </div>
 
     <div class="field">
