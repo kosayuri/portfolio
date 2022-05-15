@@ -5,8 +5,9 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <p><%= f.label :icon %></p>
-      <%= f.file_field :icon %>
+      <p><%= f.label :avatar %></p>
+      <%= image_tag current_user.avatar.url %>
+      <%= f.file_field :avatar, accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
     </div>
 
     <div class="field">
@@ -29,12 +30,15 @@
     </div>
 
     <div class="field">
-      <p><%= f.label :password %></p> (<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)<br />
+      <p><%= f.label :password %></p>
+      <p>
+        <% if @minimum_password_length %>
+        <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+        <% end %>
+      </p>
+    (<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)<br />
       <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-      <% end %>
+
     </div>
 
     <div class="field">
