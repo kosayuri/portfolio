@@ -12,7 +12,7 @@ RSpec.describe "home/index.html.erb", type: :feature do
     it "ログイン時、プロフィール変更のリンクを正しく表示すること" do
       sign_in user
       visit root_url
-      expect(page).to have_link "プロフィール変更", href: "/users/edit"
+      expect(page).to have_link "プロフィール変更", href: edit_user_registration_path
     end
 
     it "ログイン時、ログアウトのリンクを正しく表示すること" do

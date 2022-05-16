@@ -27,6 +27,7 @@ ja:
         updated_at: 更新日
         comment: コメント
         name: 名前
+        avatar: アバター
     models:
       user: ユーザー
   devise:

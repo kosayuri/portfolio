@@ -28,6 +28,15 @@ ul {
   list-style: none;
 }
 
+img {
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 100px;  /* 縦横を同じ値にする */
+  height: 100px;  /* 縦横を同じ値にする */
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+  display:block;
+  margin:0 auto;
+}
+
 .header {
   display: flex;
   padding: 0 50px;
@@ -89,7 +98,7 @@ body {
 
 .account-forum{
   text-align: center;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .field{
@@ -112,7 +121,6 @@ body {
 
 .actions input:hover {
   color: rgb(253, 253, 253);
-  text-decoration: none;
   background-color: rgb(177, 228, 126);
   border:1px solid rgb(131, 131, 131);
 }
@@ -136,4 +144,26 @@ body {
   text-align: center;
   position: absolute;
   width: 100%;
+}
+.delete {
+  padding: 20px;
+}
+
+.delete input{
+  background-color: rgb(233, 89, 89);
+  color: rgb(252, 255, 198);
+  padding: 5px 10px;
+  border-radius: 30px;
+  border:1px solid black;
+  cursor: pointer;
+}
+
+.delete input:hover{
+  color: rgb(253, 253, 253);
+  background-color: rgb(243, 137, 137);
+  border:1px solid rgb(131, 131, 131);
+}
+
+.password-form{
+  display: inline-block;
 }
