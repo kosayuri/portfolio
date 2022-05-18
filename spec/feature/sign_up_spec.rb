@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "devise/registrations/new.html.erb", type: :feature do
   describe "アカウント登録ページのテスト" do
-
     it "ひま撃ちのリンクを正しく表示すること" do
       visit new_user_registration_path
       expect(page).to have_link "ひま撃ち", href: root_path
