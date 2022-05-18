@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "devise/registrations/new.html.erb", type: :feature do
-  describe "アカウント登録ページのテスト" do
+RSpec.describe "devise/registrations/edit.html.erb", type: :feature do
+  describe "ユーザー編集ページのテスト" do
     let(:user) { create(:user) }
 
     it "ひま撃ちのリンクを正しく表示すること" do
