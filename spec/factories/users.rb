@@ -4,5 +4,6 @@ FactoryBot.define do
     sequence(:email) { |n| "TEST#{n}@example.com" }
     password { "testuser" }
     comment { "testcomment" }
+    reset_password_token { "resettoken" }
   end
 end

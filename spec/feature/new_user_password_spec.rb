@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "devise/passwords/edit.html.erb", type: :feature do
+RSpec.describe "devise/passwords/new.html.erb", type: :feature do
   describe "パスワードを忘れましたか？ページのテスト" do
     it "ひま撃ちのリンクを正しく表示すること" do
       visit new_user_password_path
