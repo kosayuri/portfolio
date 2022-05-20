@@ -37,7 +37,7 @@ img {
   margin:0 auto;
 }
 
-.header {
+#header {
   display: flex;
   padding: 0 50px;
   height: 70px;
@@ -46,7 +46,7 @@ img {
   position: relative;
 }
 
-.header a {
+#header a {
   color: rgb(252, 255, 198);
   text-decoration: none;
 }
@@ -82,18 +82,6 @@ body {
 .header-right a {
   padding-left: 20px;
   font-size: 20px;
-}
-
-@media screen and (max-width: 670px) {
-
-  .header {
-    padding: 0 15px;
-  }
-
-  .header-right a {
-    display: block;
-    text-align: center;
-  }
 }
 
 .account-forum{
@@ -175,4 +163,64 @@ body {
 
 .actions p{
   padding-bottom: 10px;
+}
+
+#material-provider{
+  width:90%;
+  margin:0 auto;
+  text-align: center;
+
+}
+
+#material-provider h1{
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+
+#material-provider div{
+  padding-bottom: 100px;
+}
+
+#material-provider p{
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+
+
+#material-provider p a{
+  width:50%;
+  display:inline-block;
+}
+
+.material-provider-name{
+  text-align: right;
+  color: rgb(156, 204, 108);
+  text-decoration: none;
+  font-weight:bold;
+}
+
+.material-provider-url{
+  text-align: left;
+}
+
+.top-move{
+  padding:10px;
+}
+
+@media screen and (max-width: 730px) {
+
+  #header {
+    padding: 0 15px;
+  }
+
+  .header-right a {
+    display: block;
+    text-align: center;
+  }
+
+  #material-provider a{
+    display: block;
+    width:auto;
+    text-align: center;
+  }
 }
