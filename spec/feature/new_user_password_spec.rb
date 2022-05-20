@@ -14,7 +14,7 @@ RSpec.describe "devise/passwords/new.html.erb", type: :feature do
 
     it "ヘッダーのログインのリンクを正しく表示すること" do
       visit new_user_password_path
-      within(:css, 'div[class="header"]') do
+      within(:css, 'div[id="header"]') do
         expect(page).to have_link "ログイン", href: new_user_session_path
       end
     end
