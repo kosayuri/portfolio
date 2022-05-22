@@ -1,9 +1,55 @@
-<div class="top_page_frame">
-  <div class="top_page">
-    <%= link_to" ゲームスタート", "#" %>
-    <%= link_to" ランキング", "#" %>
-    <%= link_to" 操作方法", "#" %>
+<div class = "top_page_frame">
+  <div class = "top_page">
+    <%= link_to "ゲームスタート", "#" %>
+    <%= link_to "ランキング", "#" %>
+    <%= link_to "遊び方", "#operation-explanation" %>
     <%= link_to "設定", "#" %>
-    <%= link_to "著作権表記", "#" %>
+    <%= link_to "素材提供者様", "#material-provider" %>
+  </div>
+  <div id = "operation-explanation">
+    <hr>
+    <h1>遊び方</h1>
+    <h2>ステータス説明</h2>
+    <div class = "status-explanation">
+      <%= image_tag 'プレイ画面.png', class: "status-explanation-img" %>
+      <p><br>Point：<br>100ポイント集まるとライフが1増える<br><br>Power：<br>100ポイントごとに自機の攻撃パターンが変化する。<br>また、ポイントが多いほど攻撃力が上がる</p>
+    </div>
+    <hr>
+    <h2>アイテム</h2>
+    <div class = "item-explanation">
+      <div>
+        <%= image_tag '小アイテム.png', class: "small-item-img" %>
+        <p>赤アイテム：Powerが増える<br>青アイテム：Pointが増える<br>緑アイテム：Scoreが増える</p>
+      </div><!--
+   --><div>
+        <%= image_tag '大アイテム.png', class: "big-item-img" %>
+        <p>大アイテム：通常アイテムより獲得量UP</p>
+      </div>
+    </div>
+    <hr>
+    <h2>操作方法</h2>
+    <%= image_tag '操作方法.png', class: "operation-explanation-img" %>
+    <%= link_to "トップへ移動", "#header", class: "top-move" %>
+    <div class ="operation-explanation-bottom"></div>
+  </div>
+  <div id = "material-provider">
+    <hr>
+    <h1>素材提供者様</h1>
+      <div class = "material-provider-name"><%= link_to "『nakano sound』", "https://www.nakano-sound.com", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"https://www.nakano-sound.com", "https://www.nakano-sound.com", target: :_blank, rel: "noopener noreferrer" %></div>
+      <div class = "material-provider-name"><%= link_to "『創作堂さくら紅葉』", "https://yukizakura.net/", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"https://yukizakura.net/", "https://yukizakura.net/", target: :_blank, rel: "noopener noreferrer" %></div>
+      <div class = "material-provider-name"><%= link_to "『魔王魂』", "https://maou.audio/", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"https://maou.audio/", "https://maou.audio/", target: :_blank, rel: "noopener noreferrer" %></div>
+      <div class = "material-provider-name"><%= link_to "『効果音ラボ』", "https://soundeffect-lab.info/", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"https://soundeffect-lab.info/", "https://soundeffect-lab.info/", target: :_blank, rel: "noopener noreferrer" %></div>
+      <div class = "material-provider-name"><%= link_to "『フリー効果音素材 くらげ工匠』", "http://www.kurage-kosho.info/", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"http://www.kurage-kosho.info/", "http://www.kurage-kosho.info/", target: :_blank, rel: "noopener noreferrer" %></div>
+      <div class = "material-provider-name"><%= link_to "『On-Jin ～音人～』", "https://on-jin.com/", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"https://on-jin.com/", "https://on-jin.com/", target: :_blank, rel: "noopener noreferrer" %></div>
+      <div class = "material-provider-name"><%= link_to "『Presys net.』", "https://www.presys.jp/", target: :_blank, rel: "noopener noreferrer" %></div><!--
+   --><div class = "material-provider-url"><%= link_to"https://www.presys.jp/", "https://www.presys.jp/", target: :_blank, rel: "noopener noreferrer" %></div>
+    <%= link_to "トップへ移動", "#header", class: "top-move" %>
+    <div class ="material-provider-bottom"></div>
   </div>
 </div>
