@@ -41,14 +41,21 @@ RSpec.describe "home/index.html.erb", type: :feature do
       expect(page).to have_link "ランキング", href: "#"
     end
 
-    it "操作方法のリンクを正しく表示すること" do
+    it "遊び方のリンクを正しく表示すること" do
       visit root_url
-      expect(page).to have_link "操作方法", href: "#"
+      expect(page).to have_link "遊び方", href: "#operation-explanation"
     end
 
     it "素材提供者様のリンクを正しく表示すること" do
       visit root_url
       expect(page).to have_link "素材提供者様", href: "#material-provider"
+    end
+
+    it "遊び方欄のトップへ移動のリンクを正しく表示すること" do
+      visit root_url
+      within(:css, 'div[id="operation-explanation"]') do
+        expect(page).to have_link "トップへ移動", href: "#header"
+      end
     end
 
     it "『nakano sound』のリンクを正しく表示すること" do
@@ -119,6 +126,13 @@ RSpec.describe "home/index.html.erb", type: :feature do
     it "https://www.presys.jp/のリンクを正しく表示すること" do
       visit root_url
       expect(page).to have_link "https://www.presys.jp/", href: "https://www.presys.jp/"
+    end
+
+    it "素材提供者様欄のトップへ移動のリンクを正しく表示すること" do
+      visit root_url
+      within(:css, 'div[id="material-provider"]') do
+        expect(page).to have_link "トップへ移動", href: "#header"
+      end
     end
   end
 end
