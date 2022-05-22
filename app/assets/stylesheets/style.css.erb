@@ -1,5 +1,5 @@
 * {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   box-sizing: border-box;
   word-break: break-all;
 }
@@ -28,13 +28,13 @@ ul {
   list-style: none;
 }
 
-img {
-  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  width: 100px;  /* 縦横を同じ値にする */
-  height: 100px;  /* 縦横を同じ値にする */
-  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
-  display:block;
-  margin:0 auto;
+.field img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 #header {
@@ -52,7 +52,7 @@ img {
 }
 
 body {
-  background-image: url(<%= asset_path 'background.gif' %>);
+  background-image: url(<%=asset_path"background.gif"%>);
 }
 
 .top_page {
@@ -84,50 +84,50 @@ body {
   font-size: 20px;
 }
 
-.account-forum{
+.account-forum {
   text-align: center;
   padding-top: 50px;
 }
 
-.field{
+.field {
   padding-top: 10px;
 }
 
-.actions{
+.actions {
   padding: 20px;
 }
 
-.actions input{
+.actions input {
   background-color: rgb(156, 204, 108);
   color: rgb(252, 255, 198);
   padding: 5px 30px;
   border-radius: 30px;
   font-size: 20px;
-  border:1px solid black;
+  border: 1px solid black;
   cursor: pointer;
 }
 
 .actions input:hover {
   color: rgb(253, 253, 253);
   background-color: rgb(177, 228, 126);
-  border:1px solid rgb(131, 131, 131);
+  border: 1px solid rgb(131, 131, 131);
 }
 
-#error_explanation{
+#error_explanation {
   text-align: left;
   margin: 0 auto;
   width: 300px;
   color: red;
 }
 
-.notice{
+.notice {
   background-color: rgb(230, 233, 89);
   text-align: center;
   position: absolute;
   width: 100%;
 }
 
-.alert{
+.alert {
   background-color: rgb(233, 89, 89);
   text-align: center;
   position: absolute;
@@ -137,81 +137,143 @@ body {
   padding: 20px;
 }
 
-.delete input{
+.delete input {
   background-color: rgb(233, 89, 89);
   color: rgb(252, 255, 198);
   padding: 5px 10px;
   border-radius: 30px;
-  border:1px solid black;
+  border: 1px solid black;
   cursor: pointer;
 }
 
-.delete input:hover{
+.delete input:hover {
   color: rgb(253, 253, 253);
   background-color: rgb(243, 137, 137);
-  border:1px solid rgb(131, 131, 131);
+  border: 1px solid rgb(131, 131, 131);
 }
 
-.password-form{
+.password-form {
   display: inline-block;
 }
 
-.devise-links a{
+.devise-links a {
   padding-bottom: 10px;
   display: inline-block;
 }
 
-.actions p{
+.actions p {
   padding-bottom: 10px;
 }
 
-#material-provider{
-  width:90%;
-  margin:0 auto;
+#material-provider {
+  width: 90%;
+  margin: 0 auto;
   text-align: center;
-
 }
 
-#material-provider h1{
+#material-provider h1 {
   padding-top: 100px;
   padding-bottom: 30px;
 }
 
-.material-provider-bottom{
+.material-provider-bottom {
   padding-bottom: 100px;
 }
 
-.material-provider-name{
+.material-provider-name {
   font-size: 20px;
   display: inline-block;
-  width:50%;
+  width: 50%;
   text-align: right;
   color: rgb(156, 204, 108);
   text-decoration: none;
-  font-weight:bold;
+  font-weight: bold;
 }
 
-.material-provider-name a{
+.material-provider-name a {
   color: rgb(156, 204, 108);
   text-decoration: none;
-  font-weight:bold;
+  font-weight: bold;
 }
 
-.material-provider-url{
+.material-provider-url {
   padding-bottom: 30px;
   font-size: 20px;
   display: inline-block;
   text-align: left;
-  width:50%
+  width: 50%;
 }
 
-.top-move{
-  padding:10px;
-  display: inline;
+.top-move {
+  padding: 10px;
+  display: block;
+}
+
+#operation-explanation {
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+
+#operation-explanation h1 {
+  padding-top: 100px;
+  padding-bottom: 10px;
+}
+
+.operation-explanation-img {
+  margin: 0 auto;
+  width: 90%;
+  display: block;
+  padding-bottom: 30px;
+}
+
+.status-explanation-img {
+  width: 60%;
+  padding-bottom: 20px;
+}
+
+.status-explanation p {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.small-item-img {
+  width: 300px;
+}
+
+.big-item-img {
+  width: 100px;
+}
+
+.item-explanation {
+  margin: 0 auto;
+}
+
+.item-explanation p {
+  padding: 20px 0;
+}
+
+#operation-explanation hr:nth-child(n + 2) {
+  width: 90%;
+}
+
+#operation-explanation h2 {
+  padding: 20px 0;
+}
+
+.item-explanation div {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.operation-explanation-bottom {
+  padding-bottom: 100px;
 }
 
 @media screen and (max-width: 730px) {
-
   #header {
     padding: 0 15px;
   }
@@ -221,9 +283,23 @@ body {
     text-align: center;
   }
 
-  #material-provider div{
+  #material-provider div {
     display: block;
-    width:auto;
+    width: auto;
     text-align: center;
+  }
+
+  .status-explanation-img {
+    width: 100%;
+    padding-bottom: 0px;
+  }
+
+  .status-explanation p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .item-explanation div {
+    display: block;
   }
 }
