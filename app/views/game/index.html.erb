@@ -1,0 +1,28 @@
+<div class="ranking">
+  <div>
+    <%= link_to "ホーム画面に移動", root_path %>
+  </div>
+  <table class = "ranking-table">
+    <tr>
+      <th>順位</th>
+      <th>アイコン</th>
+      <th>名前</th>
+      <th>ハイスコア</th>
+    </tr>
+    <% @users.each_with_index do |user, i| %>
+    <% if user_signed_in? && current_user.id == user.id %>
+      <tr class = "current-user-ranking">
+    <% else %>
+      <tr>
+    <% end %>
+      <td><%= i + 1 %></td>
+      <td><%= image_tag user.avatar.url, class: "avatar" %></td>
+      <td><%= user.name %></td>
+      <td><%= sprintf("%010d", user.hiscore) %></td>
+    </tr>
+    <% end %>
+  </table>
+  <div>
+    <%= link_to "トップへ移動", "#header" %>
+  </div>
+</div>
