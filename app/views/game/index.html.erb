@@ -1,5 +1,7 @@
 <div class="ranking">
-  <%= link_to "ホーム画面に移動", root_path %>
+  <div>
+    <%= link_to "ホーム画面に移動", root_path %>
+  </div>
   <table class = "ranking-table">
     <tr>
       <th>順位</th>
@@ -7,7 +9,7 @@
       <th>名前</th>
       <th>ハイスコア</th>
     </tr>
-    <% @user.each_with_index do |user, i| %>
+    <% @users.each_with_index do |user, i| %>
     <% if user_signed_in? && current_user.id == user.id %>
       <tr class="current-user-ranking">
     <% else %>
@@ -20,5 +22,7 @@
     </tr>
     <% end %>
   </table>
-  <%= link_to "トップへ移動", "#header" %>
+  <div>
+    <%= link_to "トップへ移動", "#header" %>
+  </div>
 </div>
