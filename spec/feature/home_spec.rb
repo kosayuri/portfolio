@@ -38,7 +38,7 @@ RSpec.describe "home/index.html.erb", type: :feature do
 
     it "ランキングのリンクを正しく表示すること" do
       visit root_url
-      expect(page).to have_link "ランキング", href: "#"
+      expect(page).to have_link "ランキング", href: game_index_path
     end
 
     it "遊び方のリンクを正しく表示すること" do

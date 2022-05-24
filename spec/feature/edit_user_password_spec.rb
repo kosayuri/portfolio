@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "devise/passwords/edit.html.erb", type: :feature do
   describe "パスワードを変更ページのテスト" do
-    let(:user) { create(:user) }
+    let!(:user) { create(:user, reset_password_token: "resettoken") }
 
     it "ひま撃ちのリンクを正しく表示すること" do
       visit edit_user_password_path(reset_password_token: user.reset_password_token)
