@@ -49,12 +49,19 @@ RSpec.describe "game/index.html.erb", type: :feature do
       end
     end
 
-    it "ランキングの順番でアイコンを表示すること" do
+    it "ランキングの順番でアバターを表示すること" do
       visit game_index_path
       ranking_users.each_with_index do |user, i|
         within(:css, "tr:nth-child(#{i + 2})") do
           expect(page).to have_selector "img[src$='#{user.avatar.url}']"
         end
+      end
+    end
+
+    it "ユーザー名がユーザー詳細ページのリンクとして正しく表示すること" do
+      visit game_index_path
+      ranking_users.all? do |user|
+        expect(page).to have_link user.name, href: game_path(id: user.id)
       end
     end
 
