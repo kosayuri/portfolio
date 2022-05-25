@@ -1,0 +1,19 @@
+
+<div class="user-show-frame">
+  <div class="user-show">
+    <h2><%= @user.name %></h2>
+    <%= image_tag @user.avatar.url %>
+    <h2>ハイスコア</h2>
+    <h3><%= sprintf("%010d", @user.hiscore) %></h3>
+    <h2 class="user-show-comment-title">コメント</h2>
+    <h3 class="user-show-comment"><%= @user.comment %></h3>
+  </div>
+  <div class="user-show-home-link">
+    <div>
+      <%= link_to "ランキング", game_index_path %>
+    </div>
+    <div>
+      <%= link_to "ホーム画面に移動", root_path %>
+    </div>
+  </div>
+<div>
