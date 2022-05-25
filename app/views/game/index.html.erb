@@ -10,16 +10,16 @@
       <th>ハイスコア</th>
     </tr>
     <% @users.each_with_index do |user, i| %>
-    <% if user_signed_in? && current_user.id == user.id %>
-      <tr class = "current-user-ranking">
-    <% else %>
-      <tr>
-    <% end %>
-      <td><%= i + 1 %></td>
-      <td><%= image_tag user.avatar.url, class: "avatar" %></td>
-      <td><%= user.name %></td>
-      <td><%= sprintf("%010d", user.hiscore) %></td>
-    </tr>
+        <% if user_signed_in? && current_user.id == user.id %>
+          <tr class = "current-user-ranking">
+        <% else %>
+          <tr>
+        <% end %>
+        <td><%= i + 1 %></td>
+        <td><%= image_tag user.avatar.url, class: "avatar" %></td>
+        <td><%= link_to user.name, game_path(id: user.id) %></td>
+        <td><%= sprintf("%010d", user.hiscore) %></td>
+        </tr>
     <% end %>
   </table>
   <div>
