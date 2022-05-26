@@ -63,7 +63,7 @@ RSpec.describe "game/show.html.erb", type: :feature do
 
     it "存在しないユーザーを指定した場合、フッラシュメッセージを表示すること" do
       visit game_path(id: user.id + 1)
-      expect(page).to have_selector "p", text: "指定のユーザーが存在しなかったため、ランキングページに戻りました。"
+      expect(page).to have_selector "p", text: I18n.t("errors.messages.returned_to_the_ranking_page_because_the_specified_user_did_not_exist")
     end
   end
 end
