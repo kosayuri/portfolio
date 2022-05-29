@@ -1,9 +1,13 @@
 <div class = "top_page_frame">
   <div class = "top_page">
-    <%= link_to "ゲームスタート", "#" %>
+    <% if user_signed_in? %>
+      <%= link_to "ゲームスタート", "#" %>
+    <% end %>
     <%= link_to "ランキング", game_index_path %>
     <%= link_to "遊び方", "#operation-explanation" %>
-    <%= link_to "設定", "#" %>
+    <% if user_signed_in? %>
+      <%= link_to "設定", edit_game_path(current_user.id) %>
+    <% end %>
     <%= link_to "素材提供者様", "#material-provider" %>
   </div>
   <div id = "operation-explanation">
