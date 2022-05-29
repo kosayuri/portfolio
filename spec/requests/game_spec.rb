@@ -41,4 +41,79 @@ RSpec.describe "Games", type: :request do
       expect(response.status).to eq 302
     end
   end
+
+  describe "設定ページのコントローラテスト" do
+    let(:user) { create(:user) }
+
+    context "ログインしている場合" do
+      before do
+        sign_in user
+        get edit_game_path(user.id)
+      end
+
+      it "200レスポンスすること" do
+        expect(response.status).to eq 200
+      end
+    end
+
+    context "ログインしていない場合" do
+      before do
+        get edit_game_path(user.id)
+      end
+
+      it "ログインページにリダイレクトすること" do
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it 'ログインしてくださいが表示されること' do
+        expect(flash[:notice]).to match('ログインしてください')
+      end
+    end
+  end
+
+  describe "設定ページのupdateコントローラテスト" do
+    let(:user) { create(:user) }
+    let(:user_edit) { attributes_for(:user, se_volume: 5, bgm_volume: 5) }
+
+    context "ログインしている場合" do
+      before do
+        sign_in user
+        patch "/game/update", params: {user: user_edit}
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it "ログインユーザーのse_volumeの値が5に変更すること" do
+        expect(user.se_volume).to eq(5)
+      end
+
+      it "ログインユーザーのse_volumeの値が5に変更すること" do
+        expect(user.bgm_volume).to eq(5)
+      end
+    end
+
+    context "ログインしていない場合" do
+      before do
+        patch "/game/update", params: {user: user_edit}
+      end
+
+      it "ログインページにリダイレクトすること" do
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it 'ログインしてくださいが表示されること' do
+        expect(flash[:notice]).to match('ログインしてください')
+      end
+    end
+  end
 end

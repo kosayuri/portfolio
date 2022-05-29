@@ -1,0 +1,17 @@
+<div class="user-edit-frame">
+  <div class="user-edit">
+    <h1>設定</h1>
+    <%= form_with model: current_user, local: true, url: {controller: 'game', action: 'update' } do |form| %>
+      <p>効果音の音量(0~10で設定)</p>
+      <%= form.number_field :se_volume, max: 10, min: 0, required: true %>
+      <p>GBMの音量(0~10で設定)</p>
+      <%= form.number_field :bgm_volume, max: 10, min: 0, required: true %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+    <div>
+      <%= link_to "ホーム画面に移動", root_path %>
+    </div>
+  </div>
+<div>

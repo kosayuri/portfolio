@@ -6,5 +6,7 @@ FactoryBot.define do
     comment { "testcomment" }
     sequence(:hiscore) { |n| n }
     avatar { Rack::Test::UploadedFile.new(File.join('spec', 'fixtures', 'test.png')) }
+    se_volume { 10 }
+    bgm_volume { 10 }
   end
 end
