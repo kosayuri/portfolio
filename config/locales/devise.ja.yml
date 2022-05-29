@@ -28,8 +28,12 @@ ja:
         comment: コメント
         name: 名前
         avatar: アバター
+        se_volume: 効果音の音量
+        bgm_volume: BGMの音量
     models:
       user: ユーザ
+      se_volume: 効果音の音量
+      bgm_volume: BGMの音量
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

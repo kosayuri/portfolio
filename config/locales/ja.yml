@@ -1,5 +1,7 @@
 ja:
   activerecord:
+    messages:
+      setup_save: "設定を保存しました"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -108,6 +110,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
+      please_login: ログインしてください
       returned_to_the_ranking_page_because_the_specified_user_did_not_exist: 指定のユーザーが存在しなかったため、ランキングページに戻りました
       accepted: を受諾してください
       blank: を入力してください
