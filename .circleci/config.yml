@@ -41,32 +41,22 @@ jobs:
       RAILS_ENV: test
     # 実行する一連のステップです。「ビルド」のステップと似たステップもあります。
     steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
-      # ここでは、データベース上で実行する前に
-      # セカンダリコンテナが起動することを確認します。
-
-  - run:
-      name: DB の待機
-      command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-  - run:
-      name: データベースのセットアップ
-      command: bundle exec rails db:schema:load --trace
-      # RSpec を並列実行します。
-      - ruby/rspec-test
-
-# ワークフローを使って上記で宣言したジョブをオーケストレーションします。
+      - setup
+      - run:
+          name: rails db:migrate
+          command: bundle exec rails db:migrate
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: Rspec
+          command: bundle exec rspec
 
 workflows:
   version: 2
-  build_and_test:     # ワークフローの名前は "build_and_test" です。
-    jobs:             # このワークフローの一部として実行するジョブのリストです。
-      - build         # まず、ビルドを実行します。
-
-      - test:         # 次に、テストを実行します。
-          requires:   # テストを実行するにはビルドを渡す必要があります。
-            - build   # 最後に、ビルドしたジョブを実行します。
+  test_and_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
