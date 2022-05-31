@@ -1,45 +1,41 @@
-version: 2.1 # 2.1 を使うと Orb や他の機能を使用することができます。
+version: 2.1
 
-# 設定で使用する Orb を宣言します。
-# Orb に関する詳細は、 https://circleci.com/docs/ja/2.0/orb-intro/ をご覧ください。
 orbs:
-  ruby: circleci/ruby@1.4.0
+  ruby: circleci/ruby@1.1.2
   node: circleci/node@2
 
-jobs:
-  build: #  "build"という名前の最初のジョブです。
-    docker:
-      - image: cimg/ruby:2.7-node # カスタマイズされた CircleCI Docker イメージを使用します。
+# setup
+commands:
+  setup:
     steps:
-      - checkout # Git コードをプルダウンします。
-      - ruby/install-deps # Ruby Orb を使って依存関係をインストールします。
-      # Node Orb を使ってパッケージをインストールします。
-      # Yarn の使用および 依存関係のキャッシュに yarn.lock の使用を指定します。
-      # 詳細は、 https://circleci.com/docs/2.0/caching/ を参照してください。
+      - checkout
+      - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
 
-  test:  # "test"という名前の２つ目のジョブです。
-    # テストを高速化するために「並列ジョブコンテナ」を実行します。
-    # これによりテストが複数のコンテナに分割されます。
-    parallelism: 3
-    # ここでは、2 つの Docker イメージを設定します。
+jobs:
+  build:
     docker:
-      - image: cimg/ruby:2.7-node # プライマリ Docker イメージです。ここでステップコマンドが実行されます。
-        environment: # add POSTGRES environment variables.
-          POSTGRES_USER: circleci-demo-ruby
-          POSTGRES_DB: user_test
+      - image: circleci/ruby:2.7-node
+    steps:
+      - setup
+  test:
+    docker:
+      - image: circleci/ruby:2.7-node
+      - image: circleci/postgres:11.6-alpine
+        name: "db"
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: ""
-    # Ruby/Rails 固有の環境変数をプライマリコンテナに適用します。
     environment:
-      BUNDLE_JOBS: "3"
+      BUNDLE_JOBS: "4"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      PGUSER: circleci-demo-ruby
+      PGUSER: postgres
       PGPASSWORD: ""
       RAILS_ENV: test
-    # 実行する一連のステップです。「ビルド」のステップと似たステップもあります。
     steps:
       - setup
       - run:
