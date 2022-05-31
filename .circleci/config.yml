@@ -23,19 +23,7 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.7-node
-      - image: circleci/postgres:11.6-alpine
-        name: "db"
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: ""
-    environment:
-      BUNDLE_JOBS: "4"
-      BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      PGUSER: postgres
-      PGPASSWORD: ""
-      RAILS_ENV: test
+      - image: circleci/sqlite:3.38.5
     steps:
       - setup
       - run:
