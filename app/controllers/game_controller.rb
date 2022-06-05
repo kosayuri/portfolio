@@ -1,5 +1,5 @@
 class GameController < ApplicationController
-  before_action :sign_in_check, only: [:update, :edit]
+  before_action :sign_in_check, only: [:update, :edit, :new]
 
   def index
     @users = User.all.order(hiscore: "DESC")
@@ -12,6 +12,10 @@ class GameController < ApplicationController
 
     flash[:notice] = I18n.t("errors.messages.returned_to_the_ranking_page_because_the_specified_user_did_not_exist")
     redirect_to(game_index_path)
+  end
+
+  def new
+    #render json: { hiscore: current_user.hiscore }
   end
 
   def edit; end
