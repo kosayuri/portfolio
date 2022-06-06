@@ -73,7 +73,6 @@ class ShakeEffect extends Game {
         this.cnt++;
         this.x = this.rang(this.width);
         this.y = this.rang(this.width);
-        console.log(this.x);
       }
     }
   }
