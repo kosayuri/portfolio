@@ -1,15 +1,17 @@
 class Stage extends Game {
   stage_data;
-// CSVを配列で読み込む
-  aaa(){
-  // CSVファイルの読み込み
-  function parseCsv(data) {
-    // csv配列を変数に格納
-    this.stage_data = this.csv_array(data);
-    console.log(this.stage_data);
+
+  csv_data(dataPath) {
+    const request = new XMLHttpRequest();
+
+    request.addEventListener('load', (event) => {
+      const response = event.target.responseText;
+      this.stage_data = this.csv_array(response);
+    });
+
+    request.open('GET', dataPath, true);
+    request.send();
   }
-  $.get("/assets/csv/v.csv", parseCsv, "text");
-}
 
   csv_array(data) {
     let cnt = 0;
