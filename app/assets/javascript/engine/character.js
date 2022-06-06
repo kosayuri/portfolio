@@ -1,6 +1,7 @@
 
 class Character extends Game {
   input() {
+    this.hiscr = 0;
     this.scr = 0;
     this.flag = 1;
     this.cnt = 0;
@@ -22,6 +23,13 @@ class Character extends Game {
   constructor() {
     super();
     this.input();
+    this.status_load();
+  }
+
+  status_load(){
+    let url = new URL(window.location.href);
+    let params = url.searchParams;
+    this.hiscr = params.get('hiscore');
   }
 
   key_control(key) {

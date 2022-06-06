@@ -67,7 +67,7 @@ class Draw extends Game {
 
   status_graph(number_img, status_img, character) {
     this.draw_graph(this.FLAME_MAX_X + 50, 15, status_img.img[0]);
-    this.status_number_graph(44, 100000000, character.scr, number_img);
+    this.status_number_graph(44, 100000000, character.hiscr, number_img);
     this.draw_graph(this.FLAME_MAX_X + 50, 15 + 60, status_img.img[1]);
     this.status_number_graph(44 + 60, 100000000, character.scr, number_img);
 
