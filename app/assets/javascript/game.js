@@ -1,6 +1,4 @@
 addEventListener('load', () => {
-
-  $.get("/assets/csv/v.csv", parseCsv, "text");
   let draw = new Draw(640, 480);
   let effect = new Effect();
   effect.input();
@@ -13,7 +11,7 @@ addEventListener('load', () => {
   let enemy = new Enemy();
   enemy.input();
   let stage = new Stage();
-  stage.aaa();
+  stage.csv_data("/stage.csv");
   let boss = new Boss();
   boss.input();
   let enemy_shot = new EnemyShot();
@@ -74,7 +72,6 @@ addEventListener('load', () => {
     sound.stage_bgm.flag = 2;
 
     function mainLoop() {
-      console.log(stage);
       if ((1000 / draw.FPS | 0) > (fps_time = ((+new Date()) - fps_start_time))) {
         requestAnimationFrame(mainLoop.bind());
         fps_over_flag = false;
@@ -114,7 +111,7 @@ addEventListener('load', () => {
         }
       }
 
-      //sound.main();
+      sound.main();
       draw.main(load_img, play_cnt[0], character, character_bullet, boss, enemy.enemys, enemy_shot.shots, effect.effects, item.items, flash_effect, endgame_effect, menu, shakee_effect);
       ctx.fillStyle = '#fff';
       ctx.font = '13pt sans-serif';
