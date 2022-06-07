@@ -95,3 +95,32 @@ class Bullet {
 }
 
 Math.fmod = function (a, b) { return Number((a - (Math.floor(a / b) * b)).toPrecision(8)); };
+
+function sleep(time) {
+  if (time > 0) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+};
+
+function post(path, params, method='post') {
+
+  // The rest of this code assumes you are not using a library.
+  // It can be made less wordy if you use one.
+  const form = document.createElement('form');
+  form.method = method;
+  form.action = path;
+
+  for (const key in params) {
+    if (params.hasOwnProperty(key)) {
+      const hiddenField = document.createElement('input');
+      hiddenField.type = 'hidden';
+      hiddenField.name = key;
+      hiddenField.value = params[key];
+
+      form.appendChild(hiddenField);
+    }
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}

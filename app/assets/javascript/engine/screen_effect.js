@@ -30,15 +30,17 @@ class EndgameEffect {
     this.input();
   }
 
-  main(sound) {
+  main(sound, character) {
     if (this.flag > 0) {
       if (this.cnt == 150) {
         if (this.flag == 1)
           sound.clear.flag = 1;
         else
           sound.game_over.flag = 1;
-      }
-
+      }else
+        if(this.cnt == 350){
+          post("/game", {score: character.scr, authenticity_token: document.getElementsByName("csrf-token")[0].content});
+        }
       this.cnt++;
     }
   }

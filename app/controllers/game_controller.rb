@@ -1,5 +1,5 @@
 class GameController < ApplicationController
-  before_action :sign_in_check, only: [:update, :edit, :new]
+  before_action :sign_in_check, only: [:update, :edit, :new, :create]
 
   def index
     @users = User.all.order(hiscore: "DESC")
@@ -14,8 +14,20 @@ class GameController < ApplicationController
     redirect_to(game_index_path)
   end
 
-  def new
-    #render json: { hiscore: current_user.hiscore }
+  def new; end
+
+  def create
+    score = params[:score].to_i
+
+    if current_user.hiscore < score
+      current_user.hiscore = score
+      current_user.save
+      flash[:notice] = I18n.t("activerecord.messages.hiscore_update")
+    else
+      flash[:notice] = I18n.t("activerecord.messages.not_updating_hiscore")
+    end
+
+    redirect_to(game_index_path)
   end
 
   def edit; end

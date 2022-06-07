@@ -41,14 +41,7 @@ addEventListener('load', () => {
   onkeydown = event => { if (key_flag) key_flag = false; if (event.code in key) key[event.code] = true; };
   onkeyup = event => { if (event.code in key) key[event.code] = false; };
 
-  function sleep(time) {
-    if (time > 0) {
-      return new Promise(resolve => setTimeout(resolve, time));
-    }
-  };
-
   async function gamemain() {
-
     const ctx = draw.canvas.getContext('2d');
 
     ctx.fillStyle = '#000';
@@ -107,7 +100,7 @@ addEventListener('load', () => {
             shakee_effect.main();
             play_cnt[0]++;
           }
-          endgame_effect.main(sound);
+          endgame_effect.main(sound, character);
         }
       }
 
@@ -119,7 +112,8 @@ addEventListener('load', () => {
       cnt++;
       requestAnimationFrame(mainLoop.bind());
     };
-    mainLoop();
+    if(menu.status!=2&&menu.cnt<30)
+      mainLoop();
   };
   gamemain();
 });
