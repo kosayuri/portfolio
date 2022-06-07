@@ -64,9 +64,11 @@ class Menu extends Game {
           break;
 
         case 2:
-          if (this.cnt == 30) {
+          if (this.cnt == 31) {
             switch (this.status) {
               case 0:
+                this.flag = 0;
+                this.cnt = 0;
                 this.menu_cnt = 0;
                 this.status = 0;
                 this.menu = 0;
@@ -76,6 +78,8 @@ class Menu extends Game {
                 break;
 
               case 1:
+                this.flag = 0;
+                this.cnt = 0;
                 this.menu_cnt = 0;
                 this.status = 0;
                 this.menu = 0;
@@ -97,6 +101,7 @@ class Menu extends Game {
                 break;
 
               case 2:
+                window.location.href = "/";
                 break;
             }
           }

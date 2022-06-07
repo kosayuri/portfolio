@@ -218,10 +218,6 @@ class Draw extends Game {
         if (menu.flag == 2) {
           ctx.fillStyle = "rgba(0,0,0," + (0.5 + 0.5 / 30 * (menu.status == 0 ? -menu.cnt : menu.cnt)) + ")";
           ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-          if (menu.cnt > 30) {
-            menu.flag = 0;
-            menu.cnt = 0;
-          }
         }
       ctx.restore();
     }
