@@ -50,15 +50,21 @@ addEventListener('load', () => {
     ctx.font = '20pt monospace';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
+    ctx.fillText("ロード中", draw.canvas.width / 2, draw.canvas.height / 2);
+
+    while (stage.stage_data === undefined || load_img.load_progress != 41 || sound.load_progress[0] != 13) {
+      await sleep(50);
+    }
+
+
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, draw.canvas.width, draw.canvas.height);
+    ctx.fillStyle = '#fff';
     ctx.fillText("何かキーを押すとスタート", draw.canvas.width / 2, draw.canvas.height / 2);
     ctx.textAlign = "start";
     ctx.textBaseline = "alphabetic";
 
     while (key_flag) {
-      await sleep(50);
-    }
-
-    while (stage.stage_data === undefined || load_img.load_progress != 41 ) {//|| sound.load_progress[0] != 13
       await sleep(50);
     }
 
@@ -112,8 +118,7 @@ addEventListener('load', () => {
       cnt++;
       requestAnimationFrame(mainLoop.bind());
     };
-    if(menu.status!=2&&menu.cnt<30)
-      mainLoop();
+    mainLoop();
   };
   gamemain();
 });
