@@ -42,6 +42,16 @@ addEventListener('load', () => {
   onkeyup = event => { if (event.code in key) key[event.code] = false; };
 
   async function gamemain() {
+    let ua = navigator.userAgent;
+
+    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0 || ua.indexOf('Mobile') > 0 ) {
+      let orientation = window.orientation;
+
+      if (orientation === 0) {
+        alert('横画面にしてください');
+      }
+    }
+
     const ctx = draw.canvas.getContext('2d');
 
     ctx.fillStyle = '#000';
