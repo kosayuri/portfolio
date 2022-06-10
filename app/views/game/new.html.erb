@@ -1,10 +1,11 @@
-<div class="game-play-frame">
-  <div class="game-play-edit">
-    <div>
-      <%= link_to "ホーム画面に移動", root_path %>
-    </div>
-  </div>
-<div>
+<div class="game-button">
+  <h2 id= "touch-character-menu">メニュー</h2>
+  <%= image_tag 'ターゲットのアイコン.png', id: "touch-character-shot" %>
+  <%= image_tag '矢印ボタン左.png', id: "touch-character-left" %>
+  <%= image_tag '矢印ボタン左.png', id: "touch-character-up" %>
+  <%= image_tag '矢印ボタン左.png', id: "touch-character-right" %>
+  <%= image_tag '矢印ボタン左.png', id: "touch-character-down" %>
+</div>
   <%= javascript_include_tag "engine/game_instance" %>
   <%= javascript_include_tag "engine/sound" %>
   <%= javascript_include_tag "engine/enemy" %>

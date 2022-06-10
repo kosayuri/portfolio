@@ -379,6 +379,10 @@ body {
   margin: 0 auto;
 }
 
+.game-button {
+  display: none;
+}
+
 @media screen and (max-width: 730px) {
   #header {
     padding: 0 15px;
@@ -423,5 +427,72 @@ body {
 
   .user-show-frame {
     width: 90%;
+  }
+
+  .game-button {
+    display: inline;
+  }
+
+  .game-button img:active,
+  h2:active {
+    filter: invert(88%) sepia(100%) saturate(2500%) hue-rotate(504deg)
+      brightness(100%) contrast(80%);
+  }
+
+  .game-button h2 {
+    writing-mode: vertical-rl;
+    padding: 10px;
+    display: inline-block;
+    color: #4b4b4b;
+    border-radius: 50px;
+    border: solid 5px #4b4b4b;
+    position: fixed;
+    top: 20px;
+  }
+
+  canvas {
+    display: block;
+    margin: 0 auto;
+    height: 100vh;
+  }
+
+  #touch-character-shot {
+    width: 100px;
+    position: fixed;
+    bottom: 20px;
+  }
+  #touch-character-left {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 100px;
+    bottom: 50px;
+  }
+
+  #touch-character-up {
+    width: 50px;
+    height: 50px;
+    transform: rotate(90deg);
+    position: fixed;
+    right: 50px;
+    bottom: 100px;
+  }
+
+  #touch-character-right {
+    width: 50px;
+    height: 50px;
+    transform: rotate(180deg);
+    position: fixed;
+    right: 0px;
+    bottom: 50px;
+  }
+
+  #touch-character-down {
+    width: 50px;
+    height: 50px;
+    transform: rotate(270deg);
+    position: fixed;
+    right: 50px;
+    bottom: 0px;
   }
 }
