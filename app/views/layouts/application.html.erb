@@ -16,7 +16,9 @@
   </head>
 
   <body>
-    <%=render 'shared/header'%>
+    <% unless current_page?(new_game_path) %>
+      <%= render "shared/header" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
