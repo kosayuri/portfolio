@@ -32,7 +32,12 @@
     </div>
     <hr>
     <h2>操作方法</h2>
-    <%= image_tag '操作方法.png', class: "operation-explanation-img" %>
+    <% if browser.platform.android? || browser.device.ipad? || browser.device.iphone? || browser.device.mobile? %>
+      <%= image_tag 'モバイル操作方法.png', class: "operation-explanation-img" %>
+      <p>プレイ時は画面を横表示に</p>
+    <% else %>
+      <%= image_tag 'PC操作方法.png', class: "operation-explanation-img" %>
+    <% end %>
     <%= link_to "トップへ移動", "#header", class: "top-move" %>
     <div class ="operation-explanation-bottom"></div>
   </div>
