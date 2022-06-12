@@ -82,7 +82,7 @@ RSpec.describe "Games", type: :request do
     context "ログインしている場合" do
       before do
         sign_in user
-        patch "/game/update", params: {user: user_edit}
+        patch "/game/update", params: { user: user_edit }
       end
 
       it "302レスポンスすること" do
@@ -93,14 +93,14 @@ RSpec.describe "Games", type: :request do
         expect(user.se_volume).to eq(5)
       end
 
-      it "ログインユーザーのse_volumeの値が5に変更すること" do
+      it "ログインユーザーのbgm_volumeの値が5に変更すること" do
         expect(user.bgm_volume).to eq(5)
       end
     end
 
     context "ログインしていない場合" do
       before do
-        patch "/game/update", params: {user: user_edit}
+        patch "/game/update", params: { user: user_edit }
       end
 
       it "ログインページにリダイレクトすること" do
@@ -119,7 +119,7 @@ RSpec.describe "Games", type: :request do
 
   describe "ゲームプレイページのコントローラテスト" do
     let(:user) { create(:user) }
-    let(:user_status) {{ hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume }}
+    let(:user_status) { { hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume } }
 
     context "ログインしている場合" do
       before do
@@ -153,8 +153,8 @@ RSpec.describe "Games", type: :request do
 
   describe "ゲームプレイページのcreateコントローラテスト" do
     let(:user) { create(:user, hiscore: 5) }
-    let(:new_hiscore) {{score:10}}
-    let(:not_hiscore) {{score:0}}
+    let(:new_hiscore) { { score: 10 } }
+    let(:not_hiscore) { { score: 0 } }
 
     context "ログインしてハイスコアを更新した場合" do
       before do

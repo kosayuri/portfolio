@@ -61,9 +61,9 @@ group :development do
   gem "rubocop-rspec", require: false
 end
 
+gem 'browser'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
 gem 'mini_magick'
-gem 'browser'

@@ -7,7 +7,7 @@ RSpec.describe "game/new.html.erb", type: :feature do
     context "PCでアクセスした場合" do
       before do
         sign_in user
-        visit new_game_path()
+        visit new_game_path
       end
 
       it "メニューボタンを表示しないこと" do
@@ -40,7 +40,7 @@ RSpec.describe "game/new.html.erb", type: :feature do
         sign_in user
         user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) CriOS/38.0.2125.67 Mobile/12B411 Safari/600.1.4'
         Capybara.current_session.driver.header('User-Agent', user_agent)
-        visit new_game_path()
+        visit new_game_path
       end
 
       it "メニューボタンを正しく表示すること" do

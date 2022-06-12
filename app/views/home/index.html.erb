@@ -1,7 +1,7 @@
 <div class = "top_page_frame">
   <div class = "top_page">
     <% if user_signed_in? %>
-      <%= link_to "ゲームスタート", new_game_path(@game_sataus), data: {"turbolinks" => false} %>
+      <%= link_to "ゲームスタート", new_game_path(@game_status), data: {"turbolinks" => false} %>
     <% end %>
     <%= link_to "ランキング", game_index_path %>
     <%= link_to "遊び方", "#operation-explanation" %>
