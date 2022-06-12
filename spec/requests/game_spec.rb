@@ -82,7 +82,7 @@ RSpec.describe "Games", type: :request do
     context "ログインしている場合" do
       before do
         sign_in user
-        patch "/game/update", params: {user: user_edit}
+        patch "/game/update", params: { user: user_edit }
       end
 
       it "302レスポンスすること" do
@@ -93,14 +93,118 @@ RSpec.describe "Games", type: :request do
         expect(user.se_volume).to eq(5)
       end
 
-      it "ログインユーザーのse_volumeの値が5に変更すること" do
+      it "ログインユーザーのbgm_volumeの値が5に変更すること" do
         expect(user.bgm_volume).to eq(5)
       end
     end
 
     context "ログインしていない場合" do
       before do
-        patch "/game/update", params: {user: user_edit}
+        patch "/game/update", params: { user: user_edit }
+      end
+
+      it "ログインページにリダイレクトすること" do
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it 'ログインしてくださいが表示されること' do
+        expect(flash[:notice]).to match('ログインしてください')
+      end
+    end
+  end
+
+  describe "ゲームプレイページのコントローラテスト" do
+    let(:user) { create(:user) }
+    let(:user_status) { { hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume } }
+
+    context "ログインしている場合" do
+      before do
+        sign_in user
+        get "/game/new", params: user_status
+      end
+
+      it "200レスポンスすること" do
+        expect(response.status).to eq 200
+      end
+    end
+
+    context "ログインしていない場合" do
+      before do
+        get "/game/new", params: user_status
+      end
+
+      it "ログインページにリダイレクトすること" do
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it 'ログインしてくださいが表示されること' do
+        expect(flash[:notice]).to match('ログインしてください')
+      end
+    end
+  end
+
+  describe "ゲームプレイページのcreateコントローラテスト" do
+    let(:user) { create(:user, hiscore: 5) }
+    let(:new_hiscore) { { score: 10 } }
+    let(:not_hiscore) { { score: 0 } }
+
+    context "ログインしてハイスコアを更新した場合" do
+      before do
+        sign_in user
+        post "/game", params: new_hiscore
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it "ログインユーザーのhiscoreの値が10に変更すること" do
+        expect(user.hiscore).to eq(10)
+      end
+
+      it "ランキングページにリダイレクトすること" do
+        expect(response).to redirect_to game_index_path
+      end
+
+      it 'ハイスコアを更新しましたが表示されること' do
+        expect(flash[:notice]).to match('ハイスコアを更新しました')
+      end
+    end
+
+    context "ログインしてハイスコアを更新しなかった場合" do
+      before do
+        sign_in user
+        post "/game", params: not_hiscore
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it "ログインユーザーのhiscoreの値が5のままなこと" do
+        expect(user.hiscore).to eq(5)
+      end
+
+      it "ランキングページにリダイレクトすること" do
+        expect(response).to redirect_to game_index_path
+      end
+
+      it 'ハイスコアを更新しませんでしたが表示されること' do
+        expect(flash[:notice]).to match('ハイスコアを更新しませんでした')
+      end
+    end
+
+    context "ログインしていない場合" do
+      before do
+        post "/game", params: not_hiscore
       end
 
       it "ログインページにリダイレクトすること" do

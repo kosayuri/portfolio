@@ -41,3 +41,6 @@ yarn-debug.log*
 /vendor/bundle
 /public/uploads
 /.env
+/public/music
+/app/assets/images
+/app/assets/music

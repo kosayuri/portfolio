@@ -2,6 +2,8 @@ ja:
   activerecord:
     messages:
       setup_save: "設定を保存しました"
+      hiscore_update: "ハイスコアを更新しました"
+      not_updating_hiscore: "ハイスコアを更新しませんでした"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
