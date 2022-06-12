@@ -27,7 +27,7 @@ RSpec.describe "home/index.html.erb", type: :feature do
       end
 
       it "ゲームスタートのリンクを正しく表示すること" do
-        expect(page).to have_link "ゲームスタート", href: "#"
+        expect(page).to have_link "ゲームスタート", href: new_game_path()
       end
 
       it "設定のリンクを正しく表示すること" do
