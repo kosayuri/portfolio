@@ -161,6 +161,10 @@ class Out extends Game {
               if (this.out(enemys[k].x, enemys[k].y, character_bullet.bullet[i].x, character_bullet.bullet[i].y,
                 character_bullet.bullet[i].spd, character_bullet.bullet[i].angle, enemy_out[enemys[k].knd] + 3)) {
                 character.scr += character_bullet.bullet[i].knd ? 400 : 800;
+
+                if (character.scr > 9999999999)
+                  character.scr = 9999999999;
+
                 enemys[k].hp -= character_bullet.bullet[i].power;
                 character_bullet.bullet[i].flag = 0;
 
@@ -190,6 +194,10 @@ class Out extends Game {
             if (this.out(boss.x, boss.y, character_bullet.bullet[i].x, character_bullet.bullet[i].y,
               character_bullet.bullet[i].spd, character_bullet.bullet[i].angle, this.BOSS_OUT + 3)) {
               character.scr += character_bullet.bullet[i].knd ? 400 : 800;
+
+              if (character.scr > 9999999999)
+                character.scr = 9999999999;
+
               boss.hp -= character_bullet.bullet[i].power;
               character_bullet.bullet[i].flag = 0;
 
@@ -341,7 +349,7 @@ class Out extends Game {
         }
       }
       return false;
-    } else if (boss.flag < 3){
+    } else if (boss.flag < 3) {
       if ((boss.x - item.x) ** 2 + (boss.y - item.y) ** 2 <= (item.big_flag ? 625 : 400) + this.BOSS_OUT ** 2) {
         return true;
       }

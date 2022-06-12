@@ -26,7 +26,7 @@ class Character extends Game {
     this.status_load();
   }
 
-  status_load(){
+  status_load() {
     let url = new URL(window.location.href);
     let params = url.searchParams;
     this.hiscr = params.get('hiscore');

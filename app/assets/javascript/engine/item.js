@@ -215,6 +215,9 @@ class Item extends Game {
               if (character.pow > 400) {
                 character.pow = 400;
                 character.scr += this.items[i].value;
+
+                if (character.scr > 9999999999)
+                  character.scr = 9999999999;
               }
               break;
 
@@ -230,6 +233,9 @@ class Item extends Game {
 
             case 2:
               character.scr += this.items[i].value;
+
+              if (character.scr > 9999999999)
+                character.scr = 9999999999;
               break;
           }
           sound.item_get.flag = 1;

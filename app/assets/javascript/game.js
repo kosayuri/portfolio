@@ -44,24 +44,24 @@ addEventListener('load', () => {
   async function gamemain() {
     let ua = navigator.userAgent;
 
-    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0 || ua.indexOf('Mobile') > 0 ) {
-      document.getElementById("touch-character-menu").addEventListener('touchstart', () => {key["Escape"] = true;}, {passive: true});
-      document.getElementById("touch-character-menu").addEventListener('touchend', () => {key["Escape"] = false;});
+    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0 || ua.indexOf('Mobile') > 0) {
+      document.getElementById("touch-character-menu").addEventListener('touchstart', () => { key["Escape"] = true; }, { passive: true });
+      document.getElementById("touch-character-menu").addEventListener('touchend', () => { key["Escape"] = false; });
 
-      document.getElementById("touch-character-left").addEventListener('touchstart', () => {key["ArrowLeft"] = true;}, {passive: true});
-      document.getElementById("touch-character-left").addEventListener('touchend', () => {key["ArrowLeft"] = false;});
+      document.getElementById("touch-character-left").addEventListener('touchstart', () => { key["ArrowLeft"] = true; }, { passive: true });
+      document.getElementById("touch-character-left").addEventListener('touchend', () => { key["ArrowLeft"] = false; });
 
-      document.getElementById("touch-character-up").addEventListener('touchstart', () => {key["ArrowUp"] = true;}, {passive: true});
-      document.getElementById("touch-character-up").addEventListener('touchend', () => {key["ArrowUp"] = false;});
+      document.getElementById("touch-character-up").addEventListener('touchstart', () => { key["ArrowUp"] = true; }, { passive: true });
+      document.getElementById("touch-character-up").addEventListener('touchend', () => { key["ArrowUp"] = false; });
 
-      document.getElementById("touch-character-right").addEventListener('touchstart', () => {key["ArrowRight"] = true;}, {passive: true});
-      document.getElementById("touch-character-right").addEventListener('touchend', () => {key["ArrowRight"] = false;});
+      document.getElementById("touch-character-right").addEventListener('touchstart', () => { key["ArrowRight"] = true; }, { passive: true });
+      document.getElementById("touch-character-right").addEventListener('touchend', () => { key["ArrowRight"] = false; });
 
-      document.getElementById("touch-character-down").addEventListener('touchstart', () => {key["ArrowDown"] = true;}, {passive: true});
-      document.getElementById("touch-character-down").addEventListener('touchend', () => {key["ArrowDown"] = false;});
+      document.getElementById("touch-character-down").addEventListener('touchstart', () => { key["ArrowDown"] = true; }, { passive: true });
+      document.getElementById("touch-character-down").addEventListener('touchend', () => { key["ArrowDown"] = false; });
 
-      document.getElementById("touch-character-shot").addEventListener('touchstart', () => {key["KeyZ"] = true;}, {passive: true});
-      document.getElementById("touch-character-shot").addEventListener('touchend', () => {key["KeyZ"] = false;});
+      document.getElementById("touch-character-shot").addEventListener('touchstart', () => { key["KeyZ"] = true; }, { passive: true });
+      document.getElementById("touch-character-shot").addEventListener('touchend', () => { key["KeyZ"] = false; });
 
       let orientation = window.orientation;
 
@@ -94,7 +94,7 @@ addEventListener('load', () => {
 
     while (key_flag) {
       await sleep(50);
-      Object.keys(key).forEach(variable_key =>{ if(key[variable_key]) key_flag=false;});
+      Object.keys(key).forEach(variable_key => { if (key[variable_key]) key_flag = false; });
     }
 
     sound.stage_bgm.flag = 2;
