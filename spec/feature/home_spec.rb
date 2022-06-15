@@ -31,6 +31,10 @@ RSpec.describe "home/index.html.erb", type: :feature do
         expect(page).to have_no_link "ログイン", href: new_user_session_path
       end
 
+      it "ゲストログインのリンクを表示しないこと" do
+        expect(page).to have_no_link "ゲストログイン", href: users_guest_sign_in_path
+      end
+
       it "ゲームスタートのリンクを正しく表示すること" do
         expect(page).to have_link "ゲームスタート", href: new_game_path(game_status)
       end
@@ -173,6 +177,10 @@ RSpec.describe "home/index.html.erb", type: :feature do
         within(:css, 'div[id="operation-explanation"]') do
           expect(page).to have_link "トップへ移動", href: "#header"
         end
+      end
+
+      it "ゲストログインのリンクを表示すること" do
+        expect(page).to have_link "ゲストログイン", href: users_guest_sign_in_path
       end
 
       it "ゲームスタートのリンクを表示しないこと" do
