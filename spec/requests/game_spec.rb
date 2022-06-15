@@ -19,26 +19,41 @@ RSpec.describe "Games", type: :request do
   end
 
   describe "ユーザー詳細ページのコントローラテスト" do
-    let!(:user) { create(:user) }
+    let(:user) { create(:user) }
 
-    it "200レスポンスすること" do
-      get game_path(id: user.id)
-      expect(response.status).to eq 200
+    context "存在しているユーザーを指定した場合" do
+      before do
+        get game_path(id: user.id)
+      end
+
+      it "200レスポンスすること" do
+        expect(response.status).to eq 200
+      end
+
+      it "@userに値を代入すること" do
+        get game_path(id: user.id)
+        expect(controller.instance_variable_get(:@user)).to eq(user)
+      end
     end
 
-    it "@userに値を代入すること" do
-      get game_path(id: user.id)
-      expect(controller.instance_variable_get(:@user)).to eq(user)
-    end
+    context "存在していないユーザーを指定した場合" do
+      before do
+        get game_path(id: user.id + 1)
+      end
 
-    it "存在しないユーザーを指定した場合、ランキングページにリダイレクトすること" do
-      get game_path(id: user.id + 1)
-      expect(response).to redirect_to game_index_path
-    end
+      it "ランキングページにリダイレクトすること" do
+        get game_path(id: user.id + 1)
+        expect(response).to redirect_to game_index_path
+      end
 
-    it "存在しないユーザーを指定した場合、302レスポンスすること" do
-      get game_path(id: user.id + 1)
-      expect(response.status).to eq 302
+      it "302レスポンスすること" do
+        get game_path(id: user.id + 1)
+        expect(response.status).to eq 302
+      end
+
+      it "ユーザーが無かったことを知らせるフッラシュメッセージを表示すること" do
+        expect(flash[:notice]).to match(I18n.t("errors.messages.returned_to_the_ranking_page_because_the_specified_user_did_not_exist"))
+      end
     end
   end
 
@@ -69,8 +84,8 @@ RSpec.describe "Games", type: :request do
         expect(response.status).to eq 302
       end
 
-      it 'ログインしてくださいが表示されること' do
-        expect(flash[:notice]).to match('ログインしてください')
+      it 'ログインを促すフッラシュメッセージを表示すること' do
+        expect(flash[:notice]).to match(I18n.t("errors.messages.please_login"))
       end
     end
   end
@@ -78,8 +93,9 @@ RSpec.describe "Games", type: :request do
   describe "設定ページのupdateコントローラテスト" do
     let(:user) { create(:user) }
     let(:user_edit) { attributes_for(:user, se_volume: 5, bgm_volume: 5) }
+    let(:over_value_user_edit) { attributes_for(:user, se_volume: 100, bgm_volume: 100) }
 
-    context "ログインしている場合" do
+    context "se_volumeとbgm_volumeに正しい値を入力した場合" do
       before do
         sign_in user
         patch "/game/update", params: { user: user_edit }
@@ -96,6 +112,34 @@ RSpec.describe "Games", type: :request do
       it "ログインユーザーのbgm_volumeの値が5に変更すること" do
         expect(user.bgm_volume).to eq(5)
       end
+
+      it "トップページにリダイレクトすること" do
+        expect(response).to redirect_to root_path
+      end
+
+      it '設定完了のフラッシュメッセージが表示されること' do
+        expect(flash[:notice]).to match(I18n.t("activerecord.messages.setup_save"))
+      end
+    end
+
+    context "se_volumeとbgm_volumeにバリデーションより高い値を入力した場合" do
+      before do
+        sign_in user
+        patch "/game/update", params: { user: over_value_user_edit }
+      end
+
+      it "302レスポンスすること" do
+        expect(response.status).to eq 302
+      end
+
+      it 'エラーメッセージのフラッシュメッセージが表示されること' do
+        expect(flash[:notice]).not_to eq nil
+      end
+
+      it "設定ページにリダイレクトすること" do
+        expect(response).to redirect_to edit_game_path(user.id)
+      end
+
     end
 
     context "ログインしていない場合" do
@@ -111,8 +155,8 @@ RSpec.describe "Games", type: :request do
         expect(response.status).to eq 302
       end
 
-      it 'ログインしてくださいが表示されること' do
-        expect(flash[:notice]).to match('ログインしてください')
+      it 'ログインを促すフッラシュメッセージを表示すること' do
+        expect(flash[:notice]).to match(I18n.t("errors.messages.please_login"))
       end
     end
   end
@@ -124,7 +168,7 @@ RSpec.describe "Games", type: :request do
     context "ログインしている場合" do
       before do
         sign_in user
-        get "/game/new", params: user_status
+        get new_game_path, params: user_status
       end
 
       it "200レスポンスすること" do
@@ -134,7 +178,7 @@ RSpec.describe "Games", type: :request do
 
     context "ログインしていない場合" do
       before do
-        get "/game/new", params: user_status
+        get new_game_path, params: user_status
       end
 
       it "ログインページにリダイレクトすること" do
@@ -145,8 +189,8 @@ RSpec.describe "Games", type: :request do
         expect(response.status).to eq 302
       end
 
-      it 'ログインしてくださいが表示されること' do
-        expect(flash[:notice]).to match('ログインしてください')
+      it 'ログインを促すフッラシュメッセージを表示すること' do
+        expect(flash[:notice]).to match(I18n.t("errors.messages.please_login"))
       end
     end
   end
@@ -174,8 +218,8 @@ RSpec.describe "Games", type: :request do
         expect(response).to redirect_to game_index_path
       end
 
-      it 'ハイスコアを更新しましたが表示されること' do
-        expect(flash[:notice]).to match('ハイスコアを更新しました')
+      it 'ハイスコアを更新した旨のフッラシュメッセージを表示すること' do
+        expect(flash[:notice]).to match(I18n.t("activerecord.messages.hiscore_update"))
       end
     end
 
@@ -197,8 +241,8 @@ RSpec.describe "Games", type: :request do
         expect(response).to redirect_to game_index_path
       end
 
-      it 'ハイスコアを更新しませんでしたが表示されること' do
-        expect(flash[:notice]).to match('ハイスコアを更新しませんでした')
+      it 'ハイスコアを更新しなかった旨のフッラシュメッセージを表示すること' do
+        expect(flash[:notice]).to match(I18n.t("activerecord.messages.not_updating_hiscore"))
       end
     end
 
@@ -215,8 +259,8 @@ RSpec.describe "Games", type: :request do
         expect(response.status).to eq 302
       end
 
-      it 'ログインしてくださいが表示されること' do
-        expect(flash[:notice]).to match('ログインしてください')
+      it 'ログインを促すフッラシュメッセージを表示すること' do
+        expect(flash[:notice]).to match(I18n.t("errors.messages.please_login"))
       end
     end
   end

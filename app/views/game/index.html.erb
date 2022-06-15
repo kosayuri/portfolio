@@ -18,7 +18,7 @@
         <td><%= i + 1 %></td>
         <td><%= image_tag user.avatar.url, class: "avatar" %></td>
         <td><%= link_to user.name, game_path(id: user.id) %></td>
-        <td><%= sprintf("%010d", user.hiscore) %></td>
+        <td><%= sprintf("%09d", user.hiscore) %></td>
         </tr>
     <% end %>
   </table>

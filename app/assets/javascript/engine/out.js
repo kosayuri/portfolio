@@ -162,8 +162,8 @@ class Out extends Game {
                 character_bullet.bullet[i].spd, character_bullet.bullet[i].angle, enemy_out[enemys[k].knd] + 3)) {
                 character.scr += character_bullet.bullet[i].knd ? 400 : 800;
 
-                if (character.scr > 9999999999)
-                  character.scr = 9999999999;
+                if (character.scr > 999999999)
+                  character.scr = 999999999;
 
                 enemys[k].hp -= character_bullet.bullet[i].power;
                 character_bullet.bullet[i].flag = 0;
@@ -195,8 +195,8 @@ class Out extends Game {
               character_bullet.bullet[i].spd, character_bullet.bullet[i].angle, this.BOSS_OUT + 3)) {
               character.scr += character_bullet.bullet[i].knd ? 400 : 800;
 
-              if (character.scr > 9999999999)
-                character.scr = 9999999999;
+              if (character.scr > 999999999)
+                character.scr = 999999999;
 
               boss.hp -= character_bullet.bullet[i].power;
               character_bullet.bullet[i].flag = 0;
