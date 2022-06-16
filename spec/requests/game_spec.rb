@@ -133,13 +133,12 @@ RSpec.describe "Games", type: :request do
       end
 
       it 'エラーメッセージのフラッシュメッセージが表示されること' do
-        expect(flash[:notice]).not_to eq nil
+        expect(flash[:notice]).not_to be_nil
       end
 
       it "設定ページにリダイレクトすること" do
         expect(response).to redirect_to edit_game_path(user.id)
       end
-
     end
 
     context "ログインしていない場合" do

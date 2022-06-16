@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "home/index.html.erb", type: :feature do
   describe "トップページのテスト" do
     let(:user) { create(:user) }
-    let(:game_status) {{ hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume }}
+    let(:game_status) { { hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume } }
 
     context "ログインしている場合" do
       before do
@@ -29,6 +29,10 @@ RSpec.describe "home/index.html.erb", type: :feature do
 
       it "ログインのリンクを表示しないこと" do
         expect(page).to have_no_link "ログイン", href: new_user_session_path
+      end
+
+      it "ゲストログインのリンクを表示しないこと" do
+        expect(page).to have_no_link "ゲストログイン", href: users_guest_sign_in_path
       end
 
       it "ゲームスタートのリンクを正しく表示すること" do
@@ -173,6 +177,10 @@ RSpec.describe "home/index.html.erb", type: :feature do
         within(:css, 'div[id="operation-explanation"]') do
           expect(page).to have_link "トップへ移動", href: "#header"
         end
+      end
+
+      it "ゲストログインのリンクを表示すること" do
+        expect(page).to have_link "ゲストログイン", href: users_guest_sign_in_path
       end
 
       it "ゲームスタートのリンクを表示しないこと" do

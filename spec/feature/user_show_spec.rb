@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "game/show.html.erb", type: :feature do
   describe "ユーザー詳細ページのテスト" do
     let!(:user) { create(:user) }
+
     context "ログインしている場合" do
       before do
         sign_in user
