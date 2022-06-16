@@ -27,3 +27,6 @@ RSpec/ContextWording:
 
 Metrics/AbcSize:
   Max: 30
+
+ClassAndModuleChildren:
+  Enabled: false
