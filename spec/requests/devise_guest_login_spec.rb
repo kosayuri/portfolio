@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "devise_guest_login", type: :request do
-
   describe 'ゲストユーザーのログインコントローラテスト' do
     before do
       post users_guest_sign_in_path

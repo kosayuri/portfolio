@@ -4,6 +4,7 @@ ja:
       setup_save: "設定を保存しました"
       hiscore_update: "ハイスコアを更新しました"
       not_updating_hiscore: "ハイスコアを更新しませんでした"
+      logged_in_as: "%{name}としてログインしました"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -114,6 +115,8 @@ ja:
     messages:
       please_login: ログインしてください
       returned_to_the_ranking_page_because_the_specified_user_did_not_exist: 指定のユーザーが存在しなかったため、ランキングページに戻りました
+      password_cannot_be_reset: "%{name}のパスワード再設定はできません"
+      cannot_be_updated_and_deleted: "%{name}の更新・削除はできません"
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません

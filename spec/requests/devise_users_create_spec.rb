@@ -38,7 +38,7 @@ RSpec.describe "devise_sign_up", type: :request do
       it 'createが失敗すること' do
         expect do
           post user_registration_path, params: { user: none_password_user_params }
-        end.to_not change(User, :count)
+        end.not_to change(User, :count)
       end
 
       it 'Eメールを入力してくださいが表示されること' do

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "home/index.html.erb", type: :feature do
   describe "トップページのテスト" do
     let(:user) { create(:user) }
-    let(:game_status) {{ hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume }}
+    let(:game_status) { { hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume } }
 
     context "ログインしている場合" do
       before do

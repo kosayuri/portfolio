@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Homes", type: :request do
   describe "トップページのコントローラテスト" do
     let(:user) { create(:user) }
-    let(:game_status) {{ hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume }}
+    let(:game_status) { { hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume } }
 
     context "ログインしている場合" do
       before do
@@ -30,7 +30,7 @@ RSpec.describe "Homes", type: :request do
       end
 
       it "@game_statusに値を代入しないこと" do
-        expect(controller.instance_variable_get(:@game_status)).to eq(nil)
+        expect(controller.instance_variable_get(:@game_status)).to be_nil
       end
     end
   end
