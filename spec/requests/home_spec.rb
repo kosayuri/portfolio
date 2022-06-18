@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Homes", type: :request do
+RSpec.describe "Home", type: :request do
   describe "トップページのコントローラテスト" do
     let(:user) { create(:user) }
     let(:game_status) { { hiscore: user.hiscore, se_volume: user.se_volume, bgm_volume: user.bgm_volume } }
