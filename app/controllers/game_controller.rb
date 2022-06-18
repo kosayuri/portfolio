@@ -1,6 +1,8 @@
 class GameController < ApplicationController
   before_action :sign_in_check, only: [:update, :edit, :new, :create]
 
+  include SignInCheck
+
   def index
     @users = User.all.order(hiscore: "DESC")
   end
@@ -43,12 +45,5 @@ class GameController < ApplicationController
       flash[:notice] = current_user.errors.full_messages.join('<br>')
       redirect_to(edit_game_path(current_user.id))
     end
-  end
-
-  def sign_in_check
-    return if user_signed_in?
-
-    flash[:notice] = I18n.t("errors.messages.please_login")
-    redirect_to(new_user_session_path)
   end
 end
