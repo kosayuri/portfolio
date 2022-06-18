@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Games", type: :request do
+RSpec.describe "Game", type: :request do
   describe "ランキングページのコントローラテスト" do
     let!(:users) { create_list(:user, 5) }
     let(:ranking_users) { (users.sort { |a, b| b[:hiscore] <=> a[:hiscore] }) }
