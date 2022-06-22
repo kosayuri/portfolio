@@ -3,7 +3,7 @@
     <h2><%= @user.name %></h2>
     <%= image_tag @user.avatar.url %>
     <h2>ハイスコア</h2>
-    <h3><%= sprintf("%010d", @user.hiscore) %></h3>
+    <h3><%= sprintf("%09d", @user.hiscore) %></h3>
     <h2 class="user-show-comment-title">コメント</h2>
     <h3 class="user-show-comment"><%= @user.comment %></h3>
   </div>
